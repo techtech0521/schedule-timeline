@@ -1,0 +1,73 @@
+/**
+ * Global styles for the Daily Schedule Timeline application
+ */
+
+@import './variables.css';
+
+/* CSS Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--background);
+  color: var(--text-primary);
+  line-height: var(--line-height);
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Typography utilities */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+p {
+  margin-bottom: 0;
+}
+
+/* Container */
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: var(--margin-vertical) var(--margin-horizontal);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  :root {
+    --margin-horizontal: 15px;
+    --margin-vertical: 20px;
+    --event-spacing: 40px;
+  }
+
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --margin-horizontal: 10px;
+    --event-spacing: 30px;
+  }
+
+  html {
+    font-size: 13px;
+  }
+}
