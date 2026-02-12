@@ -1,0 +1,242 @@
+/**
+ * Timeline Component Styles
+ * CSS Modules for the vertical timeline layout
+ */
+
+/* Main timeline container */
+.timeline {
+  position: relative;
+  padding: 40px 0;
+  margin: 0 auto;
+  max-width: var(--container-max-width);
+}
+
+/* Central vertical line */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: var(--timeline-line-width);
+  background-color: var(--timeline-line);
+  transform: translateX(-50%);
+}
+
+/* Individual timeline item */
+.item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-bottom: var(--event-spacing);
+  position: relative;
+  width: 100%;
+}
+
+/* Items positioned with content on left */
+.item.left {
+  flex-direction: row-reverse;
+}
+
+/* Items positioned with content on right */
+.item.right {
+  flex-direction: row;
+}
+
+/* Content container */
+.content {
+  flex: 1;
+  padding: 0 40px;
+}
+
+/* Left-aligned content (text-align: left) */
+.content.left {
+  text-align: left;
+}
+
+/* Right-aligned content (text-align: right) */
+.content.right {
+  text-align: right;
+}
+
+/* Node/marker */
+.node {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: var(--node-size);
+  height: var(--node-size);
+  border-radius: 50%;
+  border: var(--node-border-width) solid;
+  background-color: #ffffff;
+  z-index: 1;
+  flex-shrink: 0;
+  transition: transform var(--transition-duration) ease;
+}
+
+/* Blue node variant */
+.node.blue {
+  border-color: var(--node-blue);
+  background-color: var(--node-blue);
+}
+
+/* Red node variant */
+.node.red {
+  border-color: var(--node-red);
+  background-color: var(--node-red);
+}
+
+/* Node hover effect */
+.node:hover {
+  transform: translateX(-50%) scale(1.2);
+  cursor: pointer;
+}
+
+/* Event time label */
+.time {
+  display: block;
+  font-size: var(--font-size-time);
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: inherit;
+}
+
+/* Blue time text */
+.time.blue {
+  color: var(--node-blue);
+}
+
+/* Red time text */
+.time.red {
+  color: var(--node-red);
+}
+
+/* Event title */
+.title {
+  display: block;
+  font-size: var(--font-size-title);
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+/* Event description */
+.description {
+  display: block;
+  font-size: var(--font-size-description);
+  color: var(--text-secondary);
+  line-height: var(--line-height);
+}
+
+/* Header section */
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 0 20px;
+}
+
+.headerTitle {
+  font-size: var(--font-size-header-title);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.headerSubtitle {
+  font-size: var(--font-size-header-subtitle);
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+/* Footer section */
+.footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 20px 0;
+  color: var(--text-secondary);
+}
+
+.footerIcon {
+  font-size: 24px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.footerText {
+  font-size: var(--font-size-description);
+}
+
+/* Empty state */
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-secondary);
+}
+
+/* Loading state */
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-secondary);
+}
+
+/* Responsive: mobile - vertical line on left */
+@media (max-width: 768px) {
+  .timeline::before {
+    left: 20px;
+  }
+
+  .item,
+  .item.left,
+  .item.right {
+    flex-direction: row;
+    padding-left: 50px;
+  }
+
+  .node {
+    left: 20px;
+  }
+
+  .content {
+    padding: 0 0 0 20px;
+    text-align: left !important;
+  }
+
+  .header {
+    padding-left: 50px;
+    text-align: left;
+  }
+}
+
+/* Responsive: small mobile */
+@media (max-width: 480px) {
+  .timeline::before {
+    left: 15px;
+  }
+
+  .item,
+  .item.left,
+  .item.right {
+    padding-left: 40px;
+  }
+
+  .node {
+    left: 15px;
+  }
+
+  .content {
+    padding: 0 0 0 15px;
+  }
+
+  .header {
+    padding-left: 40px;
+  }
+
+  .title {
+    font-size: 16px;
+  }
+
+  .description {
+    font-size: 13px;
+  }
+}
