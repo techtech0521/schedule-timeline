@@ -1,0 +1,14 @@
+/**
+ * App Component Styles
+ * Additional styles specific to the App component
+ */
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
