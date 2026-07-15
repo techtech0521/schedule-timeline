@@ -29,12 +29,12 @@ export type TimeSlot = string;
  * Event categories for organizing and filtering
  */
 export type EventCategory =
-  | 'work'      // Work-related tasks
-  | 'personal'  // Personal activities
-  | 'meeting'   // Meetings and calls
-  | 'break'     // Breaks and rest time
-  | 'exercise'  // Physical activities
-  | 'other';    // Other events
+  | 'work' // Work-related tasks
+  | 'personal' // Personal activities
+  | 'meeting' // Meetings and calls
+  | 'break' // Breaks and rest time
+  | 'exercise' // Physical activities
+  | 'other'; // Other events
 
 /**
  * Node color types for timeline markers
@@ -74,6 +74,10 @@ export interface TimelineProps {
   subtitle?: string;
   /** Whether to show footer with icon */
   showFooter?: boolean;
+  /** Handler called when the user wants to edit an event */
+  onEdit?: (event: ScheduleEvent) => void;
+  /** Handler called when the user wants to delete an event */
+  onDelete?: (id: string) => void;
 }
 
 /**
@@ -86,6 +90,10 @@ export interface TimelineItemProps {
   nodeColor: NodeColor;
   /** Position of the content relative to center */
   position: ContentPosition;
+  /** Handler called when the user wants to edit this event */
+  onEdit?: (event: ScheduleEvent) => void;
+  /** Handler called when the user wants to delete this event */
+  onDelete?: (id: string) => void;
 }
 
 /**

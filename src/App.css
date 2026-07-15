@@ -12,3 +12,142 @@
   padding-top: 60px;
   padding-bottom: 60px;
 }
+
+.schedule-editor {
+  width: min(100%, var(--container-max-width));
+  margin-bottom: 48px;
+  padding: 32px;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 18px 50px rgb(15 23 42 / 10%);
+}
+
+.editor-header {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.editor-kicker {
+  margin: 0 0 8px;
+  color: var(--node-blue);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.editor-header h1 {
+  margin: 0 0 8px;
+  color: var(--text-primary);
+  font-size: 32px;
+}
+
+.editor-header p:last-child {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.schedule-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.form-field-full,
+.form-actions {
+  grid-column: 1 / -1;
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  padding: 12px 14px;
+  color: var(--text-primary);
+  font: inherit;
+  background: #f9fafb;
+  transition:
+    border-color var(--transition-duration) ease,
+    box-shadow var(--transition-duration) ease;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  border-color: var(--node-blue);
+  box-shadow: 0 0 0 3px rgb(0 168 204 / 18%);
+  outline: none;
+}
+
+.form-field textarea {
+  resize: vertical;
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.primary-button,
+.secondary-button {
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 24px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform var(--transition-duration) ease,
+    box-shadow var(--transition-duration) ease;
+}
+
+.primary-button {
+  color: #ffffff;
+  background: var(--node-blue);
+  box-shadow: 0 10px 24px rgb(0 168 204 / 24%);
+}
+
+.secondary-button {
+  color: var(--text-primary);
+  background: #e5e7eb;
+}
+
+.primary-button:hover,
+.secondary-button:hover {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .container {
+    align-items: stretch;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .schedule-editor {
+    padding: 24px;
+  }
+
+  .schedule-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-error {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: var(--node-red);
+  font-weight: 700;
+  text-align: center;
+}

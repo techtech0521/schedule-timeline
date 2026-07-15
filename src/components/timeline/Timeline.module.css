@@ -181,7 +181,6 @@
   color: var(--text-secondary);
 }
 
-
 /* Responsive: mobile - vertical line on left */
 @media (max-width: 768px) {
   .item:not(:last-child)::before {
@@ -240,5 +239,52 @@
 
   .description {
     font-size: 13px;
+  }
+}
+
+/* Content and edit/delete controls for a schedule item */
+.contentWrapper {
+  grid-area: content;
+  min-width: 0;
+}
+
+.itemActions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.contentWrapper.left .itemActions {
+  justify-content: flex-start;
+}
+
+.contentWrapper.right .itemActions {
+  justify-content: flex-end;
+}
+
+.actionButton {
+  border: 1px solid var(--node-blue);
+  border-radius: 999px;
+  padding: 6px 12px;
+  color: var(--node-blue);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.deleteButton {
+  border-color: var(--node-red);
+  color: var(--node-red);
+}
+
+.actionButton:hover {
+  background: #f3f4f6;
+}
+
+@media (max-width: 768px) {
+  .itemActions {
+    justify-content: flex-start !important;
   }
 }
