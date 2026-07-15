@@ -11,13 +11,18 @@
   max-width: var(--container-max-width);
 }
 
+/* Timeline item area */
+.items {
+  position: relative;
+}
+
 /* Central vertical line */
-.timeline::before {
+.items::before {
   content: '';
   position: absolute;
   left: 50%;
   top: 0;
-  bottom: 0;
+  bottom: var(--event-spacing);
   width: var(--timeline-line-width);
   background-color: var(--timeline-line);
   transform: translateX(-50%);
@@ -184,7 +189,7 @@
 
 /* Responsive: mobile - vertical line on left */
 @media (max-width: 768px) {
-  .timeline::before {
+  .items::before {
     left: 30px;
   }
 
@@ -212,7 +217,7 @@
 
 /* Responsive: small mobile */
 @media (max-width: 480px) {
-  .timeline::before {
+  .items::before {
     left: 20px;
   }
 

@@ -50,19 +50,21 @@ export const Timeline: React.FC<TimelineProps> = ({
       {title && <TimelineHeader title={title} subtitle={subtitle} />}
 
       {/* Timeline Items */}
-      {events.map((event, index) => {
-        const nodeColor = getNodeColor(index);
-        const position = getContentPosition(nodeColor);
+      <div className={styles.items}>
+        {events.map((event, index) => {
+          const nodeColor = getNodeColor(index);
+          const position = getContentPosition(nodeColor);
 
-        return (
-          <TimelineItem
-            key={event.id}
-            event={event}
-            nodeColor={nodeColor}
-            position={position}
-          />
-        );
-      })}
+          return (
+            <TimelineItem
+              key={event.id}
+              event={event}
+              nodeColor={nodeColor}
+              position={position}
+            />
+          );
+        })}
+      </div>
 
       {/* Footer */}
       {showFooter && <TimelineFooter />}
