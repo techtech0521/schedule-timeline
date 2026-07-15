@@ -242,3 +242,55 @@
     font-size: 13px;
   }
 }
+
+/* Edit/delete controls for a schedule item */
+.itemActions {
+  grid-area: content;
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.content.left + .itemActions,
+.item.left .itemActions {
+  justify-content: flex-start;
+}
+
+.content.right + .itemActions,
+.item.right .itemActions {
+  justify-content: flex-end;
+}
+
+.actionButton {
+  border: 1px solid var(--node-blue);
+  border-radius: 999px;
+  padding: 6px 12px;
+  color: var(--node-blue);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.deleteButton {
+  border-color: var(--node-red);
+  color: var(--node-red);
+}
+
+.actionButton:hover {
+  background: #f3f4f6;
+}
+
+@media (max-width: 768px) {
+  .itemActions {
+    justify-content: flex-start !important;
+    padding-left: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .itemActions {
+    padding-left: 12px;
+  }
+}

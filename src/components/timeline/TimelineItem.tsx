@@ -17,7 +17,9 @@ import styles from './Timeline.module.css';
 export const TimelineItem: React.FC<TimelineItemProps> = ({
   event,
   nodeColor,
-  position
+  position,
+  onEdit,
+  onDelete
 }) => {
   const itemClass = [styles.item, styles[position]].join(' ');
 
@@ -29,6 +31,24 @@ export const TimelineItem: React.FC<TimelineItemProps> = ({
         description={event.description}
         position={position}
       />
+      {(onEdit || onDelete) && (
+        <div className={styles.itemActions} aria-label={`${event.title}の操作`}>
+          {onEdit && (
+            <button type="button" className={styles.actionButton} onClick={() => onEdit(event)}>
+              編集
+            </button>
+          )}
+          {onDelete && (
+            <button
+              type="button"
+              className={[styles.actionButton, styles.deleteButton].join(' ')}
+              onClick={() => onDelete(event.id)}
+            >
+              削除
+            </button>
+          )}
+        </div>
+      )}
       <TimelineNode color={nodeColor} />
     </article>
   );
