@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="760" viewBox="0 0 900 760" role="img" aria-labelledby="title desc">
+  <title id="title">Timeline layout visual preview</title>
+  <desc id="desc">A static visual preview showing timeline text separated from the central vertical line and node markers.</desc>
+  <rect width="900" height="760" fill="#f0f0f0"/>
+  <text x="450" y="52" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#000">Daily Schedule</text>
+  <text x="450" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#666">Your planned activities for today</text>
+
+  <!-- Central line and protected no-text zone -->
+  <rect x="405" y="110" width="90" height="590" fill="#ffffff" opacity="0.72" rx="10"/>
+  <line x1="450" y1="110" x2="450" y2="700" stroke="#000" stroke-width="2"/>
+  <line x1="405" y1="110" x2="405" y2="700" stroke="#999" stroke-width="1" stroke-dasharray="6 6" opacity="0.75"/>
+  <line x1="495" y1="110" x2="495" y2="700" stroke="#999" stroke-width="1" stroke-dasharray="6 6" opacity="0.75"/>
+  <text x="450" y="724" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#666">中央の白い帯は文字を置かない安全余白</text>
+
+  <g font-family="Arial, sans-serif">
+    <g transform="translate(0,130)">
+      <circle cx="450" cy="0" r="10" fill="#00a8cc"/>
+      <text x="520" y="-12" font-size="14" font-weight="700" fill="#00a8cc">08:00-09:00</text>
+      <text x="520" y="15" font-size="18" font-weight="700" fill="#000">朝の運動</text>
+      <text x="520" y="40" font-size="14" fill="#666">ジムで有酸素運動と筋力トレーニング</text>
+    </g>
+
+    <g transform="translate(0,215)">
+      <circle cx="450" cy="0" r="10" fill="#e60000"/>
+      <text x="380" y="-12" text-anchor="end" font-size="14" font-weight="700" fill="#e60000">09:30-10:30</text>
+      <text x="380" y="15" text-anchor="end" font-size="18" font-weight="700" fill="#000">チーム立会い</text>
+      <text x="380" y="40" text-anchor="end" font-size="14" fill="#666">開発チームとの毎日の同期</text>
+    </g>
+
+    <g transform="translate(0,300)">
+      <circle cx="450" cy="0" r="10" fill="#00a8cc"/>
+      <text x="520" y="-12" font-size="14" font-weight="700" fill="#00a8cc">11:00-12:30</text>
+      <text x="520" y="15" font-size="18" font-weight="700" fill="#000">ディープワーク: 機能開発</text>
+      <text x="520" y="40" font-size="14" fill="#666">新しいタイムラインコンポーネントに集中する時間</text>
+    </g>
+
+    <g transform="translate(0,385)">
+      <circle cx="450" cy="0" r="10" fill="#e60000"/>
+      <text x="380" y="-12" text-anchor="end" font-size="14" font-weight="700" fill="#e60000">12:30-13:30</text>
+      <text x="380" y="15" text-anchor="end" font-size="18" font-weight="700" fill="#000">昼休み</text>
+      <text x="380" y="40" text-anchor="end" font-size="14" fill="#666">食事と休憩の時間</text>
+    </g>
+
+    <g transform="translate(0,470)">
+      <circle cx="450" cy="0" r="10" fill="#00a8cc"/>
+      <text x="520" y="-12" font-size="14" font-weight="700" fill="#00a8cc">14:00-15:30</text>
+      <text x="520" y="15" font-size="18" font-weight="700" fill="#000">コードレビューと計画</text>
+      <text x="520" y="40" font-size="14" fill="#666">PRレビューと次のスプリント計画</text>
+    </g>
+
+    <g transform="translate(0,555)">
+      <circle cx="450" cy="0" r="10" fill="#e60000"/>
+      <text x="380" y="-12" text-anchor="end" font-size="14" font-weight="700" fill="#e60000">16:00-17:00</text>
+      <text x="380" y="15" text-anchor="end" font-size="18" font-weight="700" fill="#000">クライアント電話会議</text>
+      <text x="380" y="40" text-anchor="end" font-size="14" fill="#666">ステークホルダーとの四半期レビュー</text>
+    </g>
+
+    <g transform="translate(0,640)">
+      <circle cx="450" cy="0" r="10" fill="#00a8cc"/>
+      <text x="520" y="-12" font-size="14" font-weight="700" fill="#00a8cc">18:00-19:00</text>
+      <text x="520" y="15" font-size="18" font-weight="700" fill="#000">夕方のランニング</text>
+      <text x="520" y="40" font-size="14" fill="#666">公園周辺5km</text>
+    </g>
+  </g>
+</svg>
