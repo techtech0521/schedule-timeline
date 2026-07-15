@@ -11,23 +11,6 @@
   max-width: var(--container-max-width);
 }
 
-/* Timeline item area */
-.items {
-  position: relative;
-}
-
-/* Central vertical line */
-.items::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: var(--event-spacing);
-  width: var(--timeline-line-width);
-  background-color: var(--timeline-line);
-  transform: translateX(-50%);
-}
-
 /* Individual timeline item */
 .item {
   display: grid;
@@ -37,6 +20,18 @@
   margin-bottom: var(--event-spacing);
   position: relative;
   width: 100%;
+}
+
+/* Central vertical connector between timeline nodes */
+.item:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  height: calc(100% + var(--event-spacing) + var(--node-size));
+  width: var(--timeline-line-width);
+  background-color: var(--timeline-line);
+  transform: translateX(-50%);
 }
 
 /* Items positioned with content on left */
@@ -189,7 +184,7 @@
 
 /* Responsive: mobile - vertical line on left */
 @media (max-width: 768px) {
-  .items::before {
+  .item:not(:last-child)::before {
     left: 30px;
   }
 
@@ -217,7 +212,7 @@
 
 /* Responsive: small mobile */
 @media (max-width: 480px) {
-  .items::before {
+  .item:not(:last-child)::before {
     left: 20px;
   }
 
