@@ -14,7 +14,7 @@ type ScheduleFormState = {
 const emptyForm: ScheduleFormState = {
   time: '',
   title: '',
-  description: ''
+  description: '',
 };
 
 const createEventId = () => {
@@ -34,6 +34,7 @@ function App() {
   const [events, setEvents] = useState<ScheduleEvent[]>(mockDailySchedule);
   const [form, setForm] = useState<ScheduleFormState>(emptyForm);
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [formError, setFormError] = useState<string | null>(null);
 
   const isEditing = editingId !== null;
 
@@ -44,26 +45,43 @@ function App() {
   const resetForm = () => {
     setForm(emptyForm);
     setEditingId(null);
+    setFormError(null);
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const nextEvent: ScheduleEvent = {
-      id: editingId ?? createEventId(),
-      time: form.time.trim(),
-      title: form.title.trim(),
-      description: form.description.trim() || undefined,
-      category: 'other'
-    };
+    const trimmedTime = form.time.trim();
+    const trimmedTitle = form.title.trim();
+    const trimmedDescription = form.description.trim();
+
+    if (!trimmedTime || !trimmedTitle) {
+      setFormError('時間と予定を入力してください。');
+      return;
+    }
 
     if (isEditing) {
       setEvents((currentEvents) =>
         currentEvents.map((currentEvent) =>
-          currentEvent.id === editingId ? nextEvent : currentEvent
+          currentEvent.id === editingId
+            ? {
+                ...currentEvent,
+                time: trimmedTime,
+                title: trimmedTitle,
+                description: trimmedDescription || undefined,
+              }
+            : currentEvent
         )
       );
     } else {
+      const nextEvent: ScheduleEvent = {
+        id: createEventId(),
+        time: trimmedTime,
+        title: trimmedTitle,
+        description: trimmedDescription || undefined,
+        category: 'other',
+      };
+
       setEvents((currentEvents) => [...currentEvents, nextEvent]);
     }
 
@@ -72,10 +90,11 @@ function App() {
 
   const handleEdit = (event: ScheduleEvent) => {
     setEditingId(event.id);
+    setFormError(null);
     setForm({
       time: event.time,
       title: event.title,
-      description: event.description ?? ''
+      description: event.description ?? '',
     });
   };
 
@@ -96,7 +115,7 @@ function App() {
           <p>時間、予定、詳細を入力して、タイムラインの予定を追加・編集・削除できます。</p>
         </div>
 
-        <form className="schedule-form" onSubmit={handleSubmit}>
+        <form className="schedule-form" onSubmit={handleSubmit} noValidate>
           <label className="form-field">
             <span>時間</span>
             <input
@@ -128,6 +147,12 @@ function App() {
               rows={3}
             />
           </label>
+
+          {formError && (
+            <p className="form-error" role="alert">
+              {formError}
+            </p>
+          )}
 
           <div className="form-actions">
             <button className="primary-button" type="submit">

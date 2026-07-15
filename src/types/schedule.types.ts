@@ -29,12 +29,12 @@ export type TimeSlot = string;
  * Event categories for organizing and filtering
  */
 export type EventCategory =
-  | 'work'      // Work-related tasks
-  | 'personal'  // Personal activities
-  | 'meeting'   // Meetings and calls
-  | 'break'     // Breaks and rest time
-  | 'exercise'  // Physical activities
-  | 'other';    // Other events
+  | 'work' // Work-related tasks
+  | 'personal' // Personal activities
+  | 'meeting' // Meetings and calls
+  | 'break' // Breaks and rest time
+  | 'exercise' // Physical activities
+  | 'other'; // Other events
 
 /**
  * Node color types for timeline markers

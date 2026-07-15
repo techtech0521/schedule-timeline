@@ -25,7 +25,7 @@ export const Timeline: React.FC<TimelineProps> = ({
   subtitle,
   showFooter = false,
   onEdit,
-  onDelete
+  onDelete,
 }) => {
   // Determine node color based on index (even = blue, odd = red)
   const getNodeColor = (index: number): NodeColor => {
