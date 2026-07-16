@@ -20,13 +20,23 @@ export const TimelineItem: React.FC<TimelineItemProps> = ({
   position,
   onEdit,
   onDelete,
+  isActive = false,
 }) => {
-  const itemClass = [styles.item, styles[position]].join(' ');
-  const contentWrapperClass = [styles.contentWrapper, styles[position]].join(' ');
+  const itemClass = [styles.item, styles[position], isActive ? styles.activeItem : '']
+    .join(' ')
+    .trim();
+  const contentWrapperClass = [
+    styles.contentWrapper,
+    styles[position],
+    isActive ? styles.activeContent : '',
+  ]
+    .join(' ')
+    .trim();
 
   return (
-    <article className={itemClass}>
+    <article className={itemClass} aria-current={isActive ? 'true' : undefined}>
       <div className={contentWrapperClass}>
+        {isActive && <span className={styles.editingBadge}>この予定を編集中</span>}
         <TimelineContent
           time={event.time}
           title={event.title}

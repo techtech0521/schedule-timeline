@@ -78,6 +78,8 @@ export interface TimelineProps {
   onEdit?: (event: ScheduleEvent) => void;
   /** Handler called when the user wants to delete an event */
   onDelete?: (id: string) => void;
+  /** Event currently loaded in the editor */
+  activeEventId?: string | null;
 }
 
 /**
@@ -94,6 +96,8 @@ export interface TimelineItemProps {
   onEdit?: (event: ScheduleEvent) => void;
   /** Handler called when the user wants to delete this event */
   onDelete?: (id: string) => void;
+  /** Whether this event is currently loaded in the editor */
+  isActive?: boolean;
 }
 
 /**
