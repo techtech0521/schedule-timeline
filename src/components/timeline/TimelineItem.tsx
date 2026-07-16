@@ -22,7 +22,9 @@ export const TimelineItem: React.FC<TimelineItemProps> = ({
   onDelete,
   isActive = false,
 }) => {
-  const itemClass = [styles.item, styles[position], isActive ? styles.activeItem : ''].join(' ').trim();
+  const itemClass = [styles.item, styles[position], isActive ? styles.activeItem : '']
+    .join(' ')
+    .trim();
   const contentWrapperClass = [
     styles.contentWrapper,
     styles[position],

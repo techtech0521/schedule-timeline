@@ -1,4 +1,4 @@
-import { useMemo, useState, type FormEvent } from 'react';
+import { useMemo, useRef, useState, type FormEvent } from 'react';
 import { Timeline } from './components/timeline';
 import { mockDailySchedule } from './data/mockEvents';
 import type { ScheduleEvent } from './types/schedule.types';
@@ -35,6 +35,8 @@ function App() {
   const [form, setForm] = useState<ScheduleFormState>(emptyForm);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [formError, setFormError] = useState<string | null>(null);
+  const editorRef = useRef<HTMLElement>(null);
+  const timeInputRef = useRef<HTMLInputElement>(null);
 
   const isEditing = editingId !== null;
 
@@ -92,6 +94,14 @@ function App() {
     resetForm();
   };
 
+  const focusEditor = () => {
+    if (editorRef.current?.scrollIntoView) {
+      editorRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    window.requestAnimationFrame(() => timeInputRef.current?.focus());
+  };
+
   const handleEdit = (event: ScheduleEvent) => {
     setEditingId(event.id);
     setFormError(null);
@@ -100,6 +110,7 @@ function App() {
       title: event.title,
       description: event.description ?? '',
     });
+    focusEditor();
   };
 
   const handleDelete = (id: string) => {
@@ -113,24 +124,29 @@ function App() {
   return (
     <div className="container">
       <div className="planner-workspace">
-        <section className="schedule-editor" aria-labelledby="schedule-editor-title">
+        <section
+          ref={editorRef}
+          className="schedule-editor"
+          aria-labelledby="schedule-editor-title"
+        >
           <div className="editor-header">
             <p className="editor-kicker">Schedule Editor</p>
             <h1 id="schedule-editor-title">予定を管理</h1>
-            <p>
-              左のフォームで追加・修正し、右のタイムラインで対象の予定をすぐ確認できます。
-            </p>
+            <p>左のフォームで追加・修正し、右のタイムラインで対象の予定をすぐ確認できます。</p>
           </div>
 
-          <div className={isEditing ? 'editor-mode editing' : 'editor-mode'}>
+          <div className={isEditing ? 'editor-mode editing' : 'editor-mode'} aria-live="polite">
             <span>{isEditing ? '編集中' : '新規追加'}</span>
-            <strong>{editingEvent ? `${editingEvent.time} ${editingEvent.title}` : '新しい予定'}</strong>
+            <strong>
+              {editingEvent ? `${editingEvent.time} ${editingEvent.title}` : '新しい予定'}
+            </strong>
           </div>
 
           <form className="schedule-form" onSubmit={handleSubmit} noValidate>
             <label className="form-field">
               <span>時間</span>
               <input
+                ref={timeInputRef}
                 type="text"
                 value={form.time}
                 onChange={(event) => setForm({ ...form, time: event.target.value })}

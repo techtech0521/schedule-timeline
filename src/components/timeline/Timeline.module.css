@@ -244,6 +244,8 @@
 
 /* Content and edit/delete controls for a schedule item */
 .contentWrapper {
+  display: flex;
+  flex-direction: column;
   grid-area: content;
   min-width: 0;
 }
