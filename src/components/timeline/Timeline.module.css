@@ -288,3 +288,31 @@
     justify-content: flex-start !important;
   }
 }
+
+.activeItem .node {
+  box-shadow: 0 0 0 8px rgb(0 168 204 / 14%);
+}
+
+.activeContent {
+  margin: -14px;
+  padding: 14px;
+  border: 2px solid rgb(0 168 204 / 36%);
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 14px 32px rgb(15 23 42 / 10%);
+}
+
+.editingBadge {
+  display: inline-flex;
+  margin-bottom: 10px;
+  border-radius: 999px;
+  padding: 4px 10px;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  background: var(--node-blue);
+}
+
+.contentWrapper.right .editingBadge {
+  align-self: flex-end;
+}
