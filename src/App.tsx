@@ -172,7 +172,7 @@ function App() {
                 value={form.description}
                 onChange={(event) => setForm({ ...form, description: event.target.value })}
                 placeholder="予定の内容やメモを入力"
-                rows={4}
+                rows={3}
               />
             </label>
 
